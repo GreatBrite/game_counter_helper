@@ -1,13 +1,13 @@
-# BMW Helper Bot
+# Game Counter Helper Bot
 
-Бот для автоматической отправки сообщений "Коплю на BMW день N" в Telegram канал.
+Бот для автоматической отправки сообщений "Разрабатываю игру день N" в Telegram канал.
 
 ## Как работает
 
 - Каждый день в 12:00 бот проверяет последние сообщения в канале
-- Если находит сообщение с "Коплю на BMW день" за сегодня - ничего не делает
+- Если находит сообщение с "Разрабатываю игру день" за сегодня - ничего не делает
 - Если не находит - отправляет сообщение с правильным номером дня
-- Считает дни с 13 июля 2025 года
+- Считает дни с 11 ноября 2025 года
 
 ## Установка
 
@@ -36,16 +36,16 @@ python main.py
 ssh root@46.149.71.220
 
 # Перейди в папку бота
-cd /var/www/bmw_counter_helper
+cd /var/www/game_counter_helper
 
 # Проверь статус PM2 (главная команда)
 pm2 status
 
 # Посмотри логи бота
-pm2 logs bmw-bot
+pm2 logs game-bot
 
 # Посмотри последние 50 строк логов
-pm2 logs bmw-bot --lines 50
+pm2 logs game-bot --lines 50
 
 # Проверь что процесс работает
 ps aux | grep python
@@ -59,10 +59,10 @@ pm2 monit
 
 ### Управление ботом
 ```bash
-pm2 restart bmw-bot    # перезапустить
-pm2 stop bmw-bot       # остановить
-pm2 start bmw-bot      # запустить
-pm2 delete bmw-bot     # удалить из PM2
+pm2 restart game-bot    # перезапустить
+pm2 stop game-bot       # остановить
+pm2 start game-bot      # запустить
+pm2 delete game-bot     # удалить из PM2
 ```
 
 ### Ручная отправка сообщения
@@ -83,19 +83,19 @@ venv/bin/python manual_send.py
 git pull
 
 # Перезапусти бота
-pm2 restart bmw-bot
+pm2 restart game-bot
 
 # Проверь логи
-pm2 logs bmw-bot
+pm2 logs game-bot
 ```
 
 ### Решение проблем
 
 **Если бот не отправляет сообщения:**
 1. Проверь статус: `pm2 status`
-2. Посмотри логи: `pm2 logs bmw-bot`
+2. Посмотри логи: `pm2 logs game-bot`
 3. Проверь .env файл: `cat .env`
-4. Перезапусти бота: `pm2 restart bmw-bot`
+4. Перезапусти бота: `pm2 restart game-bot`
 
 **Если проблемы с DNS:**
 ```bash
@@ -112,15 +112,15 @@ ping google.com
 **Если git не работает:**
 ```bash
 # Скачай файл напрямую
-wget https://raw.githubusercontent.com/ONESECTOR/bmw_counter_helper/main/main.py -O main_new.py
+wget https://raw.githubusercontent.com/ONESECTOR/game_counter_helper/main/main.py -O main_new.py
 mv main_new.py main.py
-pm2 restart bmw-bot
+pm2 restart game-bot
 ```
 
 ## Настройки
 
 В `config.py` можно изменить:
-- `START_DATE` - дата начала отсчета
+- `START_DATE` - дата начала отсчета (11 ноября 2025)
 - `SEND_TIME` - время отправки сообщения
 - `MESSAGE_TEMPLATE` - шаблон сообщения
 
