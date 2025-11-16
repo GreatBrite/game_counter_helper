@@ -52,7 +52,7 @@ async def check_and_send_message():
             if hasattr(message, 'date') and hasattr(message, 'text'):
                 message_date = message.date.date()
                 if message_date == today and message.text:
-                    if "Коплю на BMW день" in message.text:
+                    if "Разрабатываю игру день" in message.text:
                         message_sent_today = True
                         logger.info("Найдено сообщение за сегодня - пропускаем отправку")
                         break
@@ -75,8 +75,8 @@ async def start_scheduler():
     scheduler.add_job(
         check_and_send_message,
         trigger=CronTrigger(hour=hour, minute=minute),
-        id='daily_bmw_message',
-        name='Ежедневное сообщение о BMW',
+        id='daily_game_message',
+        name='Ежедневное сообщение об игре',
         replace_existing=True
     )
     
