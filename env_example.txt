@@ -1,2 +1,4 @@
 BOT_TOKEN=your_bot_token_here
 CHANNEL_ID=@your_channel_id_or_channel_id
+BOSS_USERNAME=gr8brite
+BOSS_CHAT_ID=your_chat_id_here
